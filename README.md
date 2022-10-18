@@ -7,7 +7,7 @@ Un'applicazione monolitica è un'applicazione autonoma, che a runtime può inter
 Quando si opta per un'applicazione sviluppata all'interno dello stesso progetto, il concetto di separazione viene espresso mediante l'uso delle cartelle.<br>
 Ad esempio, se prendiamo il modello MVC andremo a creare le rispettive cartelle Views, Models, Controllers, Data e Services. In questo approccio la parte di "presentation" viene definita nella cartella Views, l'implementazione dell'accesso ai dati viene definita nella cartella Data mentre la parte di "Business Logic" viene definita nella cartella "Services" e "Models".<br>
 
-![MarineGEO circle logo](images/image5-1.png "5.1")
+![image5.1](docs/images/image5-1.png "5.1")
 
 Con l'aumento delle dimensione e della complessità del progetto, anche il numero di file e cartelle aumenta, ed iniziamo ad avere i primi problemi.<br>
 L'interfaccia utente, essendo divisa in più parti (Models, Views, Controllers), non può essere raggruppata ed ordinata alfabeticamente, tale problema si accentua quando andiamo ad inserire nuovi costrutti come ad esempio "Filters" oppure "ModelBinders".<br>
@@ -20,7 +20,7 @@ Tale approccio segue il principio di "singola responsabilità" ed, oltre all'org
 - Semplificare il processo di sostituzione dell'implementazioni di una funzionalità all'interno dell'applicazione;
 - Sostituzione delle implementazione delle funzionalità a scopo di test;
 
-![MarineGEO circle logo](images/image5-2.png "5.2")
+![image5.2](docs/images/image5-2.png "5.2")
 
 # Clean Architecture
 
@@ -28,25 +28,25 @@ Le applicazioni che seguono il principio della inversione delle dipendenze (Depe
 Tale architettura mette al centro dell'applicazione la Business Logic ed il modello dell'applicazione, invertendo la dipendeza. <br>
 Questa funzionalità si ottiene definendo delle interfacce nell'Application Core che vengono poi implementate nel layer dell'Infrastructure.
 
-![MarineGEO circle logo](images/image5-7.png "5.7")
+![image5.7](docs/images/image5-7.png "5.7")
 
 In questo diagramma le dipendenze si propagano dal cerchio più esterno verso quello più interno.<br>
 All'interno del progetto "Application Core" non ci sono dipendenze con altri layer dell'applicazione mentre ritroviamo le entità e le interfacce (che possono essere racchiuse in un progetto ad-hoc chiamato DOMAIN) ed i "Domain Services" ovvero dei servizi che implementano le interfacce definite nel progetto stesso che non necessitano di dipendenze esterne.<br>
 Al di fuori dell' "Application Core" troviamo il layer "Infrastructure" che conterrà le implementazione delle interfacce che necessitano di servizi esterni ed il layer "User Interface" che contiene l'interfaccia utente. <br>
 
-![MarineGEO circle logo](images/image5-8.png "5.8")
+![image5.8](docs/images/image5-8.png "5.8")
 
 Le frecce continue rappresentano le dipendenze in fase di compilazione mentre le freccie trattegiate rappresentano le dipendenze solo a runtime. <br>
 Da questo diagramma possiamo notare che il layer di "User Interface", in fase di compilazione, utilizza le interfacce definite nell' "ApplicationCore" e idealmente non deve conoscere l'implementazione presente nel layer "Infrastrcture" mentre, in fase di esecuzione, le implementazioni devono essere presenti e questo lo si ottiene tramite la "dependency injection". <br>
 Di seguito la visualizzazione dettagliata di un'applicazione ASP.NET Core che utilizza la "Clean Architecture".
 
-![MarineGEO circle logo](images/image5-9.png "5.9")
+![image5.9](docs/images/image5-9.png "5.9")
 
 Dato che il layer "application core" non dipende dal layer "infrastructure", il processo di scrittura degli "unit tests" è semplificato. Di seguito viene mostrato come vengono inseriti i tests in quest'architettura.
 
-![MarineGEO circle logo](images/image5-10.png "5.10")
+![image5.10](docs/images/image5-10.png "5.10")
 
-![MarineGEO circle logo](images/image5-11.png "5.11")
+![image5.11](docs/images/image5-11.png "5.11")
 
 ----------
 
