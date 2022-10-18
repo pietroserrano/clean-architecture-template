@@ -93,6 +93,3 @@ In alcuni scenari può essere utile estrapolare dall'Application Core la parte i
 ## 2. Template
 All'interno del repo è presente il pacchetto zip CleanArchitecture.zip, scaricarlo e copiarlo nella seguente directory: ***C:\Users\<utente>\Documents\Visual Studio 2022\Templates***.<br>
 Una volta copiato, in fase di creazione nuovo progetto, tra i modelli presenti si potrà scegliere "Clean Architecture". Successivamente potrà essere aggiunto il layer di "User Interface" nella tecnologia desiderata (WPF, WinForm, ASP.NET Core, Console Application).
-
-Fonti:
-- https://learn.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/common-web-application-architectures
